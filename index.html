@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evercare Support Services - Kelowna, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fdfcf9;
+      color: #143d3f;
+      line-height: 1.6;
+    }
+    header {
+      background: #fdfcf9;
+      padding: 14px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 10px rgba(0,0,0,0.07);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-text { font-size: 14px; font-weight: 800; color: #143d3f; line-height: 1.2; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { text-decoration: none; color: #143d3f; font-size: 15px; font-weight: 600; transition: color 0.2s; }
+    nav a:hover { color: #2a9d8f; }
+    .btn-inquire {
+      border: 2px solid #2a9d8f !important;
+      color: #2a9d8f !important;
+      padding: 8px 22px !important;
+      border-radius: 50px !important;
+      transition: all 0.2s !important;
+    }
+    .btn-inquire:hover { background: #2a9d8f !important; color: #fff !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 3px; background: #143d3f; border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: #fdfcf9; padding: 20px 30px; gap: 18px; border-top: 1px solid #e9eeec; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: #143d3f; font-size: 16px; font-weight: 600; }
+    .hero { background-color: #d9eaf0; padding: 60px; min-height: 520px; display: flex; align-items: center; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .hero-left { background: #fdfcf9; border-radius: 20px; padding: 50px 44px; }
+    .hero-left h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; color: #143d3f; line-height: 1.1; margin-bottom: 20px; }
+    .hero-left p { font-size: 16px; color: #4e6b6d; margin-bottom: 32px; line-height: 1.7; }
+    .btn-primary { display: inline-block; background: #2a9d8f; color: #fff; padding: 13px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+    .btn-primary:hover { background: #21867a; transform: translateY(-1px); }
+    .hero-right { display: flex; flex-direction: column; gap: 16px; }
+    .hero-img { border-radius: 16px; overflow: hidden; }
+    .hero-img img { width: 100%; height: 230px; object-fit: cover; display: block; }
+    .hero-tagline { background: #2a9d8f; border-radius: 16px; padding: 30px 24px; color: #fff; font-size: 19px; font-weight: 700; text-align: center; line-height: 1.4; }
+    .services { background: #fdfcf9; padding: 80px 60px; }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: #143d3f; margin-bottom: 12px; }
+    .section-subtitle { font-size: 16px; color: #4e6b6d; margin-bottom: 48px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: #e9eeec; border-radius: 18px; padding: 34px 30px; transition: transform 0.2s, box-shadow 0.2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10); }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 18px; }
+    .service-card h3 { font-size: 20px; font-weight: 800; color: #143d3f; margin-bottom: 12px; }
+    .service-card p { font-size: 15px; color: #4e6b6d; line-height: 1.6; margin-bottom: 20px; }
+    .service-card a { color: #2a9d8f; text-decoration: none; font-weight: 700; }
+    .service-card a:hover { text-decoration: underline; }
+    .mission { background: #f0f4f3; padding: 80px 60px; }
+    .mission-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .mission-img { border-radius: 20px; overflow: hidden; }
+    .mission-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .mission-content .label { font-size: 12px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #2a9d8f; margin-bottom: 12px; }
+    .mission-content h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: #143d3f; line-height: 1.15; margin-bottom: 20px; }
+    .mission-content p { font-size: 15px; color: #4e6b6d; line-height: 1.75; margin-bottom: 16px; }
+    .contact { background: #fdfcf9; padding: 80px 60px; }
+    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #143d3f; margin-bottom: 16px; }
+    .contact-info p { font-size: 15px; color: #4e6b6d; line-height: 1.7; margin-bottom: 28px; }
+    .contact-details { display: flex; flex-direction: column; gap: 10px; }
+    .contact-detail { font-size: 15px; color: #143d3f; }
+    .contact-detail strong { font-weight: 700; }
+    .contact-form { background: #e9eeec; border-radius: 20px; padding: 40px; }
+    .contact-form h3 { font-size: 20px; font-weight: 800; color: #143d3f; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: #143d3f; margin-bottom: 6px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid #d1dae0; border-radius: 10px; font-family: inherit; font-size: 15px; color: #143d3f; background: #fff; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { border-color: #2a9d8f; }
+    .form-group textarea { height: 120px; resize: vertical; }
+    .map-section { height: 320px; overflow: hidden; }
+    .map-section iframe { width: 100%; height: 100%; border: none; display: block; }
+    .marquee-section { background: #a8d5ba; padding: 18px 0; overflow: hidden; }
+    .marquee-track { display: flex; white-space: nowrap; animation: marquee 20s linear infinite; }
+    .marquee-item { font-size: 17px; font-weight: 800; color: #143d3f; padding: 0 36px; text-transform: uppercase; letter-spacing: 1px; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    footer { background: #fdfcf9; padding: 40px 60px 24px; border-top: 1px solid #e9eeec; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .social-links { display: flex; gap: 12px; align-items: center; }
+    .social-links a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: #e9eeec; color: #143d3f; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .social-links a:hover { background: #2a9d8f; color: #fff; }
+    .footer-bottom { border-top: 1px solid #e9eeec; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 13px; color: #4e6b6d; }
+    @media (max-width: 900px) {
+      header { padding: 12px 24px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 40px 20px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .services { padding: 60px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .mission { padding: 60px 20px; }
+      .mission-inner { grid-template-columns: 1fr; }
+      .mission-img img { height: 280px; }
+      .contact { padding: 60px 20px; }
+      .contact-inner { grid-template-columns: 1fr; }
+      footer { padding: 40px 20px 24px; }
+      .footer-top { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="top">
+  <a href="#top" class="logo">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="20" fill="#d9eaf0"/>
+      <path d="M20 29c0 0-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C30 22.8 20 29 20 29z" fill="#2a9d8f"/>
+      <path d="M17 16l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L17 16z" fill="#fff"/>
+    </svg>
+    <div class="logo-text">Evercare<br>Support<br>Services</div>
+  </a>
+  <nav>
+    <a href="#top">Home</a>
+    <a href="#services">Services</a>
+    <a href="#mission">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn-inquire">Inquire Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#top" onclick="toggleMenu()">Home</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#mission" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:#2a9d8f;font-weight:800;">Inquire Now</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Compassionate Care,<br>Empowered Living</h1>
+      <p>We provide personalized community support for adults with developmental disabilities in Kelowna, fostering independence and meaningful connections every day.</p>
+      <a href="#services" class="btn-primary">Learn More</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img">
+        <img src="https://static.wixstatic.com/media/3e30e4_925614e235964f9d89fa568aef5a544c~mv2.jpg"
+             alt="Care worker with client"
+             onerror="this.style.background='#b8d8e8';this.style.height='230px';this.src='';this.alt='';">
+      </div>
+      <div class="hero-tagline">
+        Your journey to a more inclusive and supported life starts here.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <h2 class="section-title">Comprehensive Support Services</h2>
+    <p class="section-subtitle">Empowering individuals with person-centered care designed for independence and belonging.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/>
+          <circle cx="34" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/>
+          <path d="M4 42c0-8 6-14 14-14h20c8 0 14 6 14 14" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M26 28v7M23 31.5h6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Life Skills Development</h3>
+        <p>Practical training focused on everyday tasks, financial literacy, and personal organization to foster autonomy.</p>
+        <a href="#contact">View Service</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M26 8L38 20L32 20L32 32L20 32L20 20L14 20Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M8 40L44 40" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M8 40L17 26M44 40L35 26" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Social Integration</h3>
+        <p>Connecting individuals with local community groups, recreation, and volunteering to build meaningful networks.</p>
+        <a href="#contact">View Service</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 24L26 8L44 24L44 44L8 44Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="20" y="30" width="12" height="14" stroke="#2a9d8f" stroke-width="2.5"/>
+        </svg>
+        <h3>Residential Advocacy</h3>
+        <p>Compassionate guidance in finding and maintaining safe, affordable housing customized to personal needs.</p>
+        <a href="#contact">View Service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="mission-inner">
+    <div class="mission-img">
+      <img src="https://static.wixstatic.com/media/3e30e4_a608a9e331ee4f64ade9c432af5a33a6~mv2.jpg"
+           alt="Kelowna landscape - Okanagan Lake"
+           onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80';">
+    </div>
+    <div class="mission-content">
+      <p class="label">Our Mission</p>
+      <h2>Empowering Lives with Compassion and Professional Care</h2>
+      <p>At Evercare Support Services, we believe that every individual deserves a life filled with dignity, opportunity, and meaningful connection. Based in Kelowna, our team is dedicated to providing person-centered support tailored to the unique goals and aspirations of adults with developmental disabilities.</p>
+      <p>By fostering a community of belonging and respect, we help our clients navigate their daily lives with confidence, ensuring they have the tools and support needed to thrive in their local environment.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:12px;display:inline-block;">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p>We are here to support you. Whether you have a question or want to learn more about our services, reach out to us today.</p>
+      <div class="contact-details">
+        <div class="contact-detail"><strong>Email:</strong> info@evercare.ca</div>
+        <div class="contact-detail"><strong>Phone:</strong> (250) 555-0123</div>
+        <div class="contact-detail"><strong>Address:</strong> Kelowna, British Columbia</div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" name="phone" placeholder="(250) 000-0000">
+        </div>
+        <div class="form-group">
+          <label for="fmessage">Message</label>
+          <textarea id="fmessage" name="message" placeholder="How can we help you?" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:14px;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82677.8!2d-119.496!3d49.888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537d8cb6e4e8f5d3%3A0x9c6f3d5b8e6e1234!2sKelowna%2C%20BC!5e0!3m2!1sen!2sca!4v1"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    title="Kelowna BC location">
+  </iframe>
+</div>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Support</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Inclusion</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Community</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Growth</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Support</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Inclusion</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Community</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Growth</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Support</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Inclusion</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Community</span>
+    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Growth</span>
+    <span class="marquee-item">&bull;</span>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="#top" class="footer-logo">
+        <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#d9eaf0"/>
+          <path d="M20 29c0 0-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C30 22.8 20 29 20 29z" fill="#2a9d8f"/>
+          <path d="M17 16l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L17 16z" fill="#fff"/>
+        </svg>
+        <div class="logo-text">Evercare<br>Support<br>Services</div>
+      </a>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12z"/></svg>
+        </a>
+        <a href="#" aria-label="X Twitter">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.3 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V5.49a8.16 8.16 0 0 0 4.77 1.52V3.56a4.85 4.85 0 0 1-2-.87z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Evercare Support Services. Licensed and Insured.</p>
+      <p>Kelowna, British Columbia, Canada</p>
+      <p>Empowering lives through compassionate care.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#21867a';
+    setTimeout(() => { e.target.reset(); btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
