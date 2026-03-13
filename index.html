@@ -1,145 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evercare Support Services - Kelowna, BC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #fdfcf9;
-      color: #143d3f;
-      line-height: 1.6;
-    }
-    header {
-      background: #fdfcf9;
-      padding: 14px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 1px 10px rgba(0,0,0,0.07);
-    }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-text { font-size: 14px; font-weight: 800; color: #143d3f; line-height: 1.2; }
-    nav { display: flex; align-items: center; gap: 28px; }
-    nav a { text-decoration: none; color: #143d3f; font-size: 15px; font-weight: 600; transition: color 0.2s; }
-    nav a:hover { color: #2a9d8f; }
-    .btn-inquire {
-      border: 2px solid #2a9d8f !important;
-      color: #2a9d8f !important;
-      padding: 8px 22px !important;
-      border-radius: 50px !important;
-      transition: all 0.2s !important;
-    }
-    .btn-inquire:hover { background: #2a9d8f !important; color: #fff !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 3px; background: #143d3f; border-radius: 2px; }
-    .mobile-menu { display: none; flex-direction: column; background: #fdfcf9; padding: 20px 30px; gap: 18px; border-top: 1px solid #e9eeec; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { text-decoration: none; color: #143d3f; font-size: 16px; font-weight: 600; }
-    .hero { background-color: #d9eaf0; padding: 60px; min-height: 520px; display: flex; align-items: center; }
-    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
-    .hero-left { background: #fdfcf9; border-radius: 20px; padding: 50px 44px; }
-    .hero-left h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; color: #143d3f; line-height: 1.1; margin-bottom: 20px; }
-    .hero-left p { font-size: 16px; color: #4e6b6d; margin-bottom: 32px; line-height: 1.7; }
-    .btn-primary { display: inline-block; background: #2a9d8f; color: #fff; padding: 13px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: background 0.2s, transform 0.1s; }
-    .btn-primary:hover { background: #21867a; transform: translateY(-1px); }
-    .hero-right { display: flex; flex-direction: column; gap: 16px; }
-    .hero-img { border-radius: 16px; overflow: hidden; }
-    .hero-img img { width: 100%; height: 230px; object-fit: cover; display: block; }
-    .hero-tagline { background: #2a9d8f; border-radius: 16px; padding: 30px 24px; color: #fff; font-size: 19px; font-weight: 700; text-align: center; line-height: 1.4; }
-    .services { background: #fdfcf9; padding: 80px 60px; }
-    .services-inner { max-width: 1200px; margin: 0 auto; }
-    .section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: #143d3f; margin-bottom: 12px; }
-    .section-subtitle { font-size: 16px; color: #4e6b6d; margin-bottom: 48px; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card { background: #e9eeec; border-radius: 18px; padding: 34px 30px; transition: transform 0.2s, box-shadow 0.2s; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10); }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 18px; }
-    .service-card h3 { font-size: 20px; font-weight: 800; color: #143d3f; margin-bottom: 12px; }
-    .service-card p { font-size: 15px; color: #4e6b6d; line-height: 1.6; margin-bottom: 20px; }
-    .service-card a { color: #2a9d8f; text-decoration: none; font-weight: 700; }
-    .service-card a:hover { text-decoration: underline; }
-    .mission { background: #f0f4f3; padding: 80px 60px; }
-    .mission-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .mission-img { border-radius: 20px; overflow: hidden; }
-    .mission-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
-    .mission-content .label { font-size: 12px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #2a9d8f; margin-bottom: 12px; }
-    .mission-content h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: #143d3f; line-height: 1.15; margin-bottom: 20px; }
-    .mission-content p { font-size: 15px; color: #4e6b6d; line-height: 1.75; margin-bottom: 16px; }
-    .contact { background: #fdfcf9; padding: 80px 60px; }
-    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .contact-info h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #143d3f; margin-bottom: 16px; }
-    .contact-info p { font-size: 15px; color: #4e6b6d; line-height: 1.7; margin-bottom: 28px; }
-    .contact-details { display: flex; flex-direction: column; gap: 10px; }
-    .contact-detail { font-size: 15px; color: #143d3f; }
-    .contact-detail strong { font-weight: 700; }
-    .contact-form { background: #e9eeec; border-radius: 20px; padding: 40px; }
-    .contact-form h3 { font-size: 20px; font-weight: 800; color: #143d3f; margin-bottom: 24px; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 14px; font-weight: 600; color: #143d3f; margin-bottom: 6px; }
-    .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid #d1dae0; border-radius: 10px; font-family: inherit; font-size: 15px; color: #143d3f; background: #fff; outline: none; transition: border-color 0.2s; }
-    .form-group input:focus, .form-group textarea:focus { border-color: #2a9d8f; }
-    .form-group textarea { height: 120px; resize: vertical; }
-    .map-section { height: 320px; overflow: hidden; }
-    .map-section iframe { width: 100%; height: 100%; border: none; display: block; }
-    .marquee-section { background: #a8d5ba; padding: 18px 0; overflow: hidden; }
-    .marquee-track { display: flex; white-space: nowrap; animation: marquee 20s linear infinite; }
-    .marquee-item { font-size: 17px; font-weight: 800; color: #143d3f; padding: 0 36px; text-transform: uppercase; letter-spacing: 1px; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    footer { background: #fdfcf9; padding: 40px 60px 24px; border-top: 1px solid #e9eeec; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .social-links { display: flex; gap: 12px; align-items: center; }
-    .social-links a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: #e9eeec; color: #143d3f; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .social-links a:hover { background: #2a9d8f; color: #fff; }
-    .footer-bottom { border-top: 1px solid #e9eeec; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .footer-bottom p { font-size: 13px; color: #4e6b6d; }
-    @media (max-width: 900px) {
-      header { padding: 12px 24px; }
-      nav { display: none; }
-      .hamburger { display: flex; }
-      .hero { padding: 40px 20px; }
-      .hero-inner { grid-template-columns: 1fr; }
-      .services { padding: 60px 20px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .mission { padding: 60px 20px; }
-      .mission-inner { grid-template-columns: 1fr; }
-      .mission-img img { height: 280px; }
-      .contact { padding: 60px 20px; }
-      .contact-inner { grid-template-columns: 1fr; }
-      footer { padding: 40px 20px 24px; }
-      .footer-top { flex-direction: column; gap: 20px; align-items: flex-start; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Evercare Support Services | Community Support in Kelowna & Okanagan, BC</title>
+<meta name="description" content="Evercare Support Services provides compassionate, person-centered community support for adults with developmental disabilities in Kelowna, West Kelowna, Lake Country, Penticton and the Okanagan.">
+<meta name="keywords" content="community support services Kelowna, respite support Kelowna, daily living support BC, supported living services Kelowna, community inclusion support Okanagan, developmental disability support British Columbia, personalized support services Kelowna, care support services Okanagan">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito','Helvetica Neue',Helvetica,Arial,sans-serif;background:#fff;color:#1a3a4a;line-height:1.6}
+:root{--teal:#2a9d8f;--dark:#143d3f;--mid:#4e6b6d;--light-bg:#eaf4f6;--card-bg:#f0f5f4;--green:#25d366;--border:#dde8e8}
+a{text-decoration:none;color:inherit}
+/* NAV */
+header{background:#fff;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 10px rgba(0,0,0,.08)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:42px;height:42px;flex-shrink:0}
+.logo-text{font-size:13px;font-weight:800;color:var(--dark);line-height:1.2}
+nav{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+nav a{font-size:14px;font-weight:700;color:var(--dark);padding:4px 0;border-bottom:2px solid transparent;transition:all .2s}
+nav a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+.btn-nav{background:var(--teal);color:#fff!important;padding:9px 20px!important;border-radius:50px;border:none!important;transition:background .2s!important}
+.btn-nav:hover{background:#21867a!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:3px;background:var(--dark);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;flex-direction:column;background:#fff;padding:20px 5%;gap:16px;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:16px;font-weight:700;color:var(--dark)}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--light-bg) 0%,#d4edf5 100%);padding:70px 5%;min-height:560px;display:flex;align-items:center}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-left{background:#fff;border-radius:24px;padding:50px 44px}
+.hero-tag{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero-left h1{font-size:clamp(30px,4vw,52px);font-weight:800;color:var(--dark);line-height:1.1;margin-bottom:16px}
+.hero-left p{font-size:15px;color:var(--mid);margin-bottom:28px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:background .2s,transform .1s}
+.btn-primary:hover{background:#21867a;transform:translateY(-1px)}
+.btn-wa{background:var(--green);color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.btn-wa:hover{background:#1ebe5b}
+.hero-right{display:flex;flex-direction:column;gap:16px}
+.hero-img{border-radius:18px;overflow:hidden}
+.hero-img img{width:100%;height:240px;object-fit:cover;display:block}
+.hero-callout{background:var(--teal);border-radius:18px;padding:28px 24px;color:#fff;font-size:18px;font-weight:700;text-align:center;line-height:1.4}
+/* TRUST BAR */
+.trust-bar{background:var(--dark);padding:22px 5%}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:700}
+.trust-item svg{flex-shrink:0}
+/* SECTION BASE */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.section-title{font-size:clamp(26px,3.5vw,44px);font-weight:800;color:var(--dark);margin-bottom:14px;line-height:1.15}
+.section-sub{font-size:15px;color:var(--mid);margin-bottom:48px;max-width:680px;line-height:1.7}
+/* ABOUT */
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden}
+.about-img img{width:100%;height:440px;object-fit:cover;display:block}
+.about-content p{font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:16px}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+.value-tag{background:var(--card-bg);border-left:3px solid var(--teal);padding:8px 14px;border-radius:0 8px 8px 0;font-size:13px;font-weight:700;color:var(--dark)}
+/* SERVICES */
+.services{background:var(--card-bg)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:#fff;border-radius:18px;padding:32px 28px;transition:transform .2s,box-shadow .2s;border:1px solid var(--border)}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
+.service-icon{width:52px;height:52px;margin-bottom:16px;color:var(--teal)}
+.service-card h3{font-size:18px;font-weight:800;color:var(--dark);margin-bottom:10px}
+.service-card p{font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:16px}
+.service-benefits{list-style:none;display:flex;flex-direction:column;gap:6px}
+.service-benefits li{font-size:13px;color:var(--dark);display:flex;align-items:center;gap:6px}
+.service-benefits li::before{content:"✓";color:var(--teal);font-weight:800}
+/* WHY US */
+.why{background:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--card-bg);border-radius:16px;padding:28px 24px;border-top:3px solid var(--teal)}
+.why-card h3{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.why-card p{font-size:14px;color:var(--mid);line-height:1.6}
+/* AREAS */
+.areas{background:var(--card-bg)}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:0}
+.area-card{background:#fff;border-radius:14px;padding:24px 20px;text-align:center;border:1px solid var(--border)}
+.area-card h3{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.area-card p{font-size:13px;color:var(--mid)}
+/* CONTACT */
+.contact-section{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--dark);margin-bottom:14px}
+.contact-info p{font-size:15px;color:var(--mid);line-height:1.7;margin-bottom:24px}
+.contact-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.contact-item{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--dark);font-weight:600}
+.contact-item a{color:var(--teal)}
+.contact-item a:hover{text-decoration:underline}
+.ci-icon{width:40px;height:40px;border-radius:50%;background:var(--card-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal)}
+.contact-form{background:var(--card-bg);border-radius:20px;padding:40px}
+.contact-form h3{font-size:20px;font-weight:800;color:var(--dark);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:700;color:var(--dark);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:2px solid #d4e3e3;border-radius:10px;font-family:inherit;font-size:14px;color:var(--dark);background:#fff;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{height:110px;resize:vertical}
+/* MARQUEE */
+.marquee-section{background:#a8d5ba;padding:18px 0;overflow:hidden}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 22s linear infinite}
+.marquee-item{font-size:16px;font-weight:800;color:var(--dark);padding:0 32px;text-transform:uppercase;letter-spacing:1px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* FOOTER */
+footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo .logo-text{color:#fff}
+.footer-desc{font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:18px}
+.footer-col h4{font-size:14px;font-weight:800;color:#fff;margin-bottom:14px;letter-spacing:.5px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,.7);transition:color .2s}
+.footer-col ul li a:hover{color:#fff}
+.social-links{display:flex;gap:10px;margin-top:8px}
+.social-links a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;transition:background .2s}
+.social-links a:hover{background:var(--teal)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.6)}
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:13px 20px;border-radius:50px;font-weight:700;font-size:15px;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;cursor:pointer}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.5)}
+.wa-float svg{flex-shrink:0}
+/* RESPONSIVE */
+@media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){header{padding:12px 5%}nav{display:none}.hamburger{display:flex}.hero{padding:40px 5%}.hero-inner{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.about-img img{height:260px}.services-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.areas-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head><body>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/12507189152" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat on WhatsApp
+</a>
 
+<!-- HEADER -->
 <header id="top">
   <a href="#top" class="logo">
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="20" cy="20" r="20" fill="#d9eaf0"/>
-      <path d="M20 29c0 0-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C30 22.8 20 29 20 29z" fill="#2a9d8f"/>
-      <path d="M17 16l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L17 16z" fill="#fff"/>
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="21" fill="#d9eaf0"/>
+      <path d="M21 30s-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C31 23.8 21 30 21 30z" fill="#2a9d8f"/>
+      <path d="M18 17l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L18 17z" fill="#fff"/>
     </svg>
     <div class="logo-text">Evercare<br>Support<br>Services</div>
   </a>
   <nav>
     <a href="#top">Home</a>
+    <a href="#about">About</a>
     <a href="#services">Services</a>
-    <a href="#mission">About</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#areas">Areas Served</a>
     <a href="#contact">Contact</a>
-    <a href="#contact" class="btn-inquire">Inquire Now</a>
+    <a href="https://wa.me/12507189152" target="_blank" class="btn-nav">Book a Consultation</a>
   </nav>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -147,218 +167,371 @@
 </header>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#top" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#services" onclick="toggleMenu()">Services</a>
-  <a href="#mission" onclick="toggleMenu()">About</a>
+  <a href="#why-us" onclick="toggleMenu()">Why Us</a>
+  <a href="#areas" onclick="toggleMenu()">Areas Served</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="#contact" onclick="toggleMenu()" style="color:#2a9d8f;font-weight:800;">Inquire Now</a>
+  <a href="https://wa.me/12507189152" target="_blank" onclick="toggleMenu()" style="color:#25d366;font-weight:800;">Book a Consultation</a>
 </div>
 
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <h1>Compassionate Care,<br>Empowered Living</h1>
-      <p>We provide personalized community support for adults with developmental disabilities in Kelowna, fostering independence and meaningful connections every day.</p>
-      <a href="#services" class="btn-primary">Learn More</a>
+      <p class="hero-tag">Serving the Okanagan, BC</p>
+      <h1>Compassionate, Person-Centered Support in the Okanagan</h1>
+      <p>Evercare Support Services provides reliable community-based support designed to promote independence, dignity, safety, and inclusion for adults with developmental disabilities.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.06 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Request Support
+        </a>
+        <a href="https://wa.me/12507189152" target="_blank" class="btn-wa">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
     </div>
     <div class="hero-right">
       <div class="hero-img">
-        <img src="https://static.wixstatic.com/media/3e30e4_925614e235964f9d89fa568aef5a544c~mv2.jpg"
-             alt="Care worker with client"
-             onerror="this.style.background='#b8d8e8';this.style.height='230px';this.src='';this.alt='';">
+        <img src="https://static.wixstatic.com/media/3e30e4_925614e235964f9d89fa568aef5a544c~mv2.jpg" alt="Care support worker with client in Kelowna BC" onerror="this.style.background='#b8d8e8';this.style.height='240px';this.src='';this.alt='';">
       </div>
-      <div class="hero-tagline">
-        Your journey to a more inclusive and supported life starts here.
+      <div class="hero-callout">Supporting Independence, Dignity, and Inclusion Across the Okanagan</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Person-Centered Care
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Reliable &amp; Responsive
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Community-Based Model
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Flexible &amp; Individualized
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Serving the Okanagan, BC
+    </div>
+  </div>
+</div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://static.wixstatic.com/media/3e30e4_a608a9e331ee4f64ade9c432af5a33a6~mv2.jpg" alt="Okanagan landscape - Kelowna BC" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80';">
+      </div>
+      <div class="about-content">
+        <p class="section-label">About Evercare</p>
+        <h2 class="section-title">Compassionate Support You Can Rely On</h2>
+        <p>Evercare Support Services is a British Columbia-based community support company focused on delivering dependable, respectful, and person-centered care in homes and community settings across the Okanagan.</p>
+        <p>We focus on helping individuals live with dignity, independence, safety, and meaningful inclusion. Our services are designed to support daily living, community participation, respite, supported living, and individualized care planning.</p>
+        <p><strong>Our Mission:</strong> To provide high-quality, compassionate, and person-centered support that improves quality of life, promotes independence, and strengthens community inclusion.</p>
+        <p><strong>Our Vision:</strong> To become a trusted support provider in British Columbia known for dependable care, strong values, and meaningful impact in the lives of individuals and families.</p>
+        <div class="values-grid">
+          <div class="value-tag">Compassion</div>
+          <div class="value-tag">Respect &amp; Dignity</div>
+          <div class="value-tag">Inclusion</div>
+          <div class="value-tag">Reliability</div>
+          <div class="value-tag">Accountability</div>
+          <div class="value-tag">Safety</div>
+          <div class="value-tag">Professionalism</div>
+          <div class="value-tag">Community Connection</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services" id="services">
-  <div class="services-inner">
-    <h2 class="section-title">Comprehensive Support Services</h2>
-    <p class="section-subtitle">Empowering individuals with person-centered care designed for independence and belonging.</p>
+  <div class="section-inner">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Our Support Services</h2>
+    <p class="section-sub">Flexible, individualized services delivered in client homes and community settings across the Okanagan.</p>
     <div class="services-grid">
       <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/>
-          <circle cx="34" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/>
-          <path d="M4 42c0-8 6-14 14-14h20c8 0 14 6 14 14" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M26 28v7M23 31.5h6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <h3>Life Skills Development</h3>
-        <p>Practical training focused on everyday tasks, financial literacy, and personal organization to foster autonomy.</p>
-        <a href="#contact">View Service</a>
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/><circle cx="34" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/><path d="M4 42c0-8 6-14 14-14h20c8 0 14 6 14 14" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M26 28v7M23 31.5h6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Community Inclusion Support</h3>
+        <p>Support for individuals to participate in community activities, develop confidence, strengthen social connection, and build practical life skills.</p>
+        <ul class="service-benefits"><li>Improves social participation</li><li>Builds confidence and routine</li><li>Supports meaningful community presence</li></ul>
       </div>
       <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M26 8L38 20L32 20L32 32L20 32L20 20L14 20Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M8 40L44 40" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M8 40L17 26M44 40L35 26" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <h3>Social Integration</h3>
-        <p>Connecting individuals with local community groups, recreation, and volunteering to build meaningful networks.</p>
-        <a href="#contact">View Service</a>
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 8L38 20L32 20L32 32L20 32L20 20L14 20Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 40L44 40" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M8 40L17 26M44 40L35 26" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Daily Living Support</h3>
+        <p>Assistance with routines and practical day-to-day tasks such as meal preparation, organization, appointments, and independent living skills.</p>
+        <ul class="service-benefits"><li>Encourages independence</li><li>Improves consistency in routines</li><li>Supports practical skill development</li></ul>
       </div>
       <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 24L26 8L44 24L44 44L8 44Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
-          <rect x="20" y="30" width="12" height="14" stroke="#2a9d8f" stroke-width="2.5"/>
-        </svg>
-        <h3>Residential Advocacy</h3>
-        <p>Compassionate guidance in finding and maintaining safe, affordable housing customized to personal needs.</p>
-        <a href="#contact">View Service</a>
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 24L26 8L44 24L44 44L8 44Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/><rect x="20" y="30" width="12" height="14" stroke="#2a9d8f" stroke-width="2.5"/></svg>
+        <h3>Supported Living / Outreach</h3>
+        <p>Individualized, goal-directed support designed to help people maintain or increase independence while living in community-based settings.</p>
+        <ul class="service-benefits"><li>Promotes autonomy</li><li>Supports community navigation</li><li>Builds independent living capacity</li></ul>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 14c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8 8-3.6 8-8z" stroke="#2a9d8f" stroke-width="2.5"/><path d="M10 44v-4c0-4.4 3.6-8 8-8h4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M34 34l-4 4 4 4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 38h12" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Companion Support</h3>
+        <p>Respectful one-to-one support that encourages engagement, emotional connection, confidence, and routine stability.</p>
+        <ul class="service-benefits"><li>Reduces isolation</li><li>Improves engagement</li><li>Creates continuity and trust</li></ul>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 10v10M26 32v10M10 26h10M32 26h10" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="26" r="10" stroke="#2a9d8f" stroke-width="2.5"/></svg>
+        <h3>Respite Support</h3>
+        <p>Short-term support that gives families and caregivers dependable relief while maintaining quality and continuity of care.</p>
+        <ul class="service-benefits"><li>Reduces caregiver stress</li><li>Provides reliable temporary coverage</li><li>Maintains consistency for the individual</li></ul>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 40v-4a8 8 0 0 1 8-8h28a8 8 0 0 1 8 8v4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="8" stroke="#2a9d8f" stroke-width="2.5"/><path d="M18 28l-6 6M34 28l6 6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Family-Centered Support</h3>
+        <p>Collaborative support that works with families and support networks to create stability, trust, and continuity in service delivery.</p>
+        <ul class="service-benefits"><li>Strengthens communication</li><li>Aligns support with family goals</li><li>Improves care consistency</li></ul>
+      </div>
+      <div class="service-card" style="grid-column:2">
+        <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="10" width="36" height="32" rx="4" stroke="#2a9d8f" stroke-width="2.5"/><path d="M16 22h20M16 30h12" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Personalized Support Services</h3>
+        <p>Flexible support tailored to the goals, needs, strengths, and routines of each individual — fully responsive to changing needs.</p>
+        <ul class="service-benefits"><li>Fully individualized care</li><li>Responsive to changing needs</li><li>Centered on personal goals</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="mission" id="mission">
-  <div class="mission-inner">
-    <div class="mission-img">
-      <img src="https://static.wixstatic.com/media/3e30e4_a608a9e331ee4f64ade9c432af5a33a6~mv2.jpg"
-           alt="Kelowna landscape - Okanagan Lake"
-           onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80';">
-    </div>
-    <div class="mission-content">
-      <p class="label">Our Mission</p>
-      <h2>Empowering Lives with Compassion and Professional Care</h2>
-      <p>At Evercare Support Services, we believe that every individual deserves a life filled with dignity, opportunity, and meaningful connection. Based in Kelowna, our team is dedicated to providing person-centered support tailored to the unique goals and aspirations of adults with developmental disabilities.</p>
-      <p>By fostering a community of belonging and respect, we help our clients navigate their daily lives with confidence, ensuring they have the tools and support needed to thrive in their local environment.</p>
-      <a href="#contact" class="btn-primary" style="margin-top:12px;display:inline-block;">Get in Touch</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-info">
-      <h2>Get in Touch</h2>
-      <p>We are here to support you. Whether you have a question or want to learn more about our services, reach out to us today.</p>
-      <div class="contact-details">
-        <div class="contact-detail"><strong>Email:</strong> info@evercare.ca</div>
-        <div class="contact-detail"><strong>Phone:</strong> (250) 555-0123</div>
-        <div class="contact-detail"><strong>Address:</strong> Kelowna, British Columbia</div>
+<!-- WHY US -->
+<section class="why" id="why-us">
+  <div class="section-inner">
+    <p class="section-label">Why Evercare</p>
+    <h2 class="section-title">Why Families Choose Evercare Support Services</h2>
+    <p class="section-sub">We combine compassion, professionalism, individualized care, and strong operational standards to deliver meaningful support that individuals and families can rely on.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Person-Centered &amp; Dignity-Focused</h3>
+        <p>Every service plan is built around the individual — their goals, strengths, preferences, and needs. We never apply a one-size-fits-all approach.</p>
+      </div>
+      <div class="why-card">
+        <h3>Community-Based Support Model</h3>
+        <p>Services are delivered where life happens — in client homes, community settings, and public spaces that matter most to the individuals we support.</p>
+      </div>
+      <div class="why-card">
+        <h3>Flexible &amp; Individualized Services</h3>
+        <p>Our services adapt to the evolving goals and circumstances of each person, ensuring continuity and relevance at every stage of their journey.</p>
+      </div>
+      <div class="why-card">
+        <h3>Strong Safety &amp; Professional Standards</h3>
+        <p>We maintain documented emergency procedures, incident reporting processes, medication management practices, and compliance-based workforce standards.</p>
+      </div>
+      <div class="why-card">
+        <h3>Commitment to Inclusion &amp; Respect</h3>
+        <p>Inclusion and dignity are not optional extras — they are the foundation of every interaction, every service plan, and every relationship we build.</p>
+      </div>
+      <div class="why-card">
+        <h3>Dependable Communication &amp; Responsiveness</h3>
+        <p>We are accessible, responsive, and built for reliable communication. Families and individuals can always reach us quickly through multiple channels.</p>
       </div>
     </div>
-    <div class="contact-form">
-      <h3>Send Us a Message</h3>
-      <form onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label for="fname">Full Name</label>
-          <input type="text" id="fname" name="name" placeholder="Your name" required>
+  </div>
+</section>
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="section-inner">
+    <p class="section-label">Service Area</p>
+    <h2 class="section-title">Areas We Serve</h2>
+    <p class="section-sub">Evercare Support Services operates across the Okanagan region of British Columbia, delivering support in client homes and community settings.</p>
+    <div class="areas-grid">
+      <div class="area-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" style="margin:0 auto 10px;display:block"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Kelowna</h3>
+        <p>Primary service hub in the Okanagan</p>
+      </div>
+      <div class="area-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" style="margin:0 auto 10px;display:block"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>West Kelowna</h3>
+        <p>Community and home-based support</p>
+      </div>
+      <div class="area-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" style="margin:0 auto 10px;display:block"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Lake Country</h3>
+        <p>Serving individuals and families</p>
+      </div>
+      <div class="area-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" style="margin:0 auto 10px;display:block"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Penticton</h3>
+        <p>Expanding Okanagan coverage</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:15px;color:#4e6b6d;">Not sure if we serve your area? <a href="#contact" style="color:#2a9d8f;font-weight:700;">Contact us</a> or <a href="https://wa.me/12507189152" target="_blank" style="color:#25d366;font-weight:700;">message us on WhatsApp</a>.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get in Touch</p>
+        <h2>Speak With Us About Care Options</h2>
+        <p>Reach out today to learn more about available support options, service areas, and personalized care solutions. We are here to help individuals and families find the right path forward.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.06 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div style="font-size:12px;color:#4e6b6d;font-weight:600;margin-bottom:2px">Phone</div><a href="tel:2507189152">250-718-9152</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div style="font-size:12px;color:#4e6b6d;font-weight:600;margin-bottom:2px">Email</div><a href="mailto:info@evercaresupport.ca">info@evercaresupport.ca</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon" style="background:#e8f9ef;color:#25d366"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            <div><div style="font-size:12px;color:#4e6b6d;font-weight:600;margin-bottom:2px">WhatsApp</div><a href="https://wa.me/12507189152" target="_blank" style="color:#25d366">Message Us on WhatsApp</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div style="font-size:12px;color:#4e6b6d;font-weight:600;margin-bottom:2px">Service Area</div>Kelowna, West Kelowna, Lake Country, Penticton &amp; the Okanagan</div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div style="font-size:12px;color:#4e6b6d;font-weight:600;margin-bottom:2px">Website</div><a href="https://evercaresupport.ca">evercaresupport.ca</a></div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="femail">Email Address</label>
-          <input type="email" id="femail" name="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="fphone">Phone Number</label>
-          <input type="tel" id="fphone" name="phone" placeholder="(250) 000-0000">
-        </div>
-        <div class="form-group">
-          <label for="fmessage">Message</label>
-          <textarea id="fmessage" name="message" placeholder="How can we help you?" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:14px;">Send Message</button>
-      </form>
+        <a href="https://wa.me/12507189152" target="_blank" class="btn-wa" style="display:inline-flex;margin-top:4px">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Need a quick response? Message us on WhatsApp
+        </a>
+      </div>
+      <div class="contact-form">
+        <h3>Request Support Services</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">Full Name *</label><input type="text" id="fname" name="name" placeholder="Your full name" required></div>
+            <div class="form-group"><label for="fphone">Phone Number *</label><input type="tel" id="fphone" name="phone" placeholder="250-000-0000" required></div>
+          </div>
+          <div class="form-group"><label for="femail">Email Address</label><input type="email" id="femail" name="email" placeholder="your@email.com"></div>
+          <div class="form-group">
+            <label for="fservice">Service Needed</label>
+            <select id="fservice" name="service">
+              <option value="">Select a service...</option>
+              <option>Community Inclusion Support</option>
+              <option>Daily Living Support</option>
+              <option>Supported Living / Outreach</option>
+              <option>Companion Support</option>
+              <option>Respite Support</option>
+              <option>Family-Centered Support</option>
+              <option>Personalized Support Services</option>
+              <option>Not sure — need guidance</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="flocation">Location / Area</label><input type="text" id="flocation" name="location" placeholder="e.g. Kelowna, West Kelowna..."></div>
+          <div class="form-group"><label for="fmessage">Message</label><textarea id="fmessage" name="message" placeholder="Tell us about the support you're looking for..."></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:15px">Contact Us Today</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="map-section">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82677.8!2d-119.496!3d49.888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537d8cb6e4e8f5d3%3A0x9c6f3d5b8e6e1234!2sKelowna%2C%20BC!5e0!3m2!1sen!2sca!4v1"
-    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-    title="Kelowna BC location">
-  </iframe>
-</div>
-
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item">Support</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Inclusion</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Community</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Growth</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Support</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Inclusion</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Community</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Growth</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Support</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Inclusion</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Community</span>
-    <span class="marquee-item">&bull;</span>
-    <span class="marquee-item">Growth</span>
-    <span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Compassion</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Respect</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Dignity</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Inclusion</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Reliability</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Safety</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Community Connection</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Compassion</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Respect</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Dignity</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Inclusion</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Reliability</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Safety</span><span class="marquee-item">&bull;</span>
+    <span class="marquee-item">Community Connection</span><span class="marquee-item">&bull;</span>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <a href="#top" class="footer-logo">
-        <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="20" fill="#d9eaf0"/>
-          <path d="M20 29c0 0-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C30 22.8 20 29 20 29z" fill="#2a9d8f"/>
-          <path d="M17 16l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L17 16z" fill="#fff"/>
-        </svg>
-        <div class="logo-text">Evercare<br>Support<br>Services</div>
-      </a>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="#" aria-label="Instagram">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="#" aria-label="YouTube">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12z"/></svg>
-        </a>
-        <a href="#" aria-label="X Twitter">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="#" aria-label="TikTok">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.3 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V5.49a8.16 8.16 0 0 0 4.77 1.52V3.56a4.85 4.85 0 0 1-2-.87z"/></svg>
-        </a>
+      <div>
+        <div class="footer-logo">
+          <svg width="38" height="38" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#1a5254"/><path d="M21 30s-10-6.2-10-12.5a7 7 0 0 1 10-6.2 7 7 0 0 1 10 6.2C31 23.8 21 30 21 30z" fill="#2a9d8f"/><path d="M18 17l-2 2 4 4 6.5-6.5-2-1.5-4.5 4.5L18 17z" fill="#fff"/></svg>
+          <div class="logo-text">Evercare<br>Support<br>Services</div>
+        </div>
+        <p class="footer-desc">Compassionate, person-centered community support for adults with developmental disabilities across the Okanagan, British Columbia.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/12507189152" target="_blank" aria-label="WhatsApp" style="background:#25d366"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Community Inclusion</a></li>
+          <li><a href="#services">Daily Living Support</a></li>
+          <li><a href="#services">Supported Living</a></li>
+          <li><a href="#services">Companion Support</a></li>
+          <li><a href="#services">Respite Support</a></li>
+          <li><a href="#services">Family-Centered Support</a></li>
+          <li><a href="#services">Personalized Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Areas Served</h4>
+        <ul>
+          <li><a href="#areas">Kelowna</a></li>
+          <li><a href="#areas">West Kelowna</a></li>
+          <li><a href="#areas">Lake Country</a></li>
+          <li><a href="#areas">Penticton</a></li>
+          <li><a href="#areas">Okanagan Region</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:2507189152">250-718-9152</a></li>
+          <li><a href="mailto:info@evercaresupport.ca">info@evercaresupport.ca</a></li>
+          <li><a href="https://wa.me/12507189152" target="_blank">WhatsApp Us</a></li>
+          <li><a href="https://evercaresupport.ca">evercaresupport.ca</a></li>
+          <li><a href="#contact">Book a Consultation</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Evercare Support Services. Licensed and Insured.</p>
-      <p>Kelowna, British Columbia, Canada</p>
-      <p>Empowering lives through compassionate care.</p>
+      <p>&copy; 2025 Evercare Support Services. All rights reserved. British Columbia, Canada.</p>
+      <p>Kelowna &bull; West Kelowna &bull; Lake Country &bull; Penticton &bull; Okanagan, BC</p>
     </div>
   </div>
 </footer>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = 'Message Sent!';
-    btn.style.background = '#21867a';
-    setTimeout(() => { e.target.reset(); btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const t = document.querySelector(this.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type="submit"]');
+  btn.textContent='Thank you! We will be in touch shortly.';
+  btn.style.background='#21867a';
+  setTimeout(()=>{e.target.reset();btn.textContent='Contact Us Today';btn.style.background=''},4000);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
   });
+});
 </script>
 </body>
 </html>
