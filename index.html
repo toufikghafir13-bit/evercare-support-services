@@ -115,7 +115,7 @@ section{padding:80px 5%}
 .service-card p{font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:16px}
 .service-benefits{list-style:none;display:flex;flex-direction:column;gap:6px}
 .service-benefits li{font-size:13px;color:var(--dark);display:flex;align-items:center;gap:6px}
-.service-benefits li::before{content:"â";color:var(--teal);font-weight:800}
+.service-benefits li::before{content:"Ã¢ÂÂ";color:var(--teal);font-weight:800}
 /* WHY US */
 .why{background:#fff}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -342,7 +342,7 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
       <div class="service-card" style="grid-column:2">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="10" width="36" height="32" rx="4" stroke="#2a9d8f" stroke-width="2.5"/><path d="M16 22h20M16 30h12" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Personalized Support Services</h3>
-        <p>Flexible support tailored to the goals, needs, strengths, and routines of each individual â fully responsive to changing needs.</p>
+        <p>Flexible support tailored to the goals, needs, strengths, and routines of each individual Ã¢ÂÂ fully responsive to changing needs.</p>
         <ul class="service-benefits"><li>Fully individualized care</li><li>Responsive to changing needs</li><li>Centered on personal goals</li></ul>
       </div>
     </div>
@@ -358,11 +358,11 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
     <div class="why-grid">
       <div class="why-card">
         <h3>Person-Centered &amp; Dignity-Focused</h3>
-        <p>Every service plan is built around the individual â their goals, strengths, preferences, and needs. We never apply a one-size-fits-all approach.</p>
+        <p>Every service plan is built around the individual Ã¢ÂÂ their goals, strengths, preferences, and needs. We never apply a one-size-fits-all approach.</p>
       </div>
       <div class="why-card">
         <h3>Community-Based Support Model</h3>
-        <p>Services are delivered where life happens â in client homes, community settings, and public spaces that matter most to the individuals we support.</p>
+        <p>Services are delivered where life happens Ã¢ÂÂ in client homes, community settings, and public spaces that matter most to the individuals we support.</p>
       </div>
       <div class="why-card">
         <h3>Flexible &amp; Individualized Services</h3>
@@ -374,7 +374,7 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
       </div>
       <div class="why-card">
         <h3>Commitment to Inclusion &amp; Respect</h3>
-        <p>Inclusion and dignity are not optional extras â they are the foundation of every interaction, every service plan, and every relationship we build.</p>
+        <p>Inclusion and dignity are not optional extras Ã¢ÂÂ they are the foundation of every interaction, every service plan, and every relationship we build.</p>
       </div>
       <div class="why-card">
         <h3>Dependable Communication &amp; Responsiveness</h3>
@@ -466,7 +466,7 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
               <option>Respite Support</option>
               <option>Family-Centered Support</option>
               <option>Personalized Support Services</option>
-              <option>Not sure â need guidance</option>
+              <option>Not sure Ã¢ÂÂ need guidance</option>
             </select>
           </div>
           <div class="form-group"><label for="flocation">Location / Area</label><input type="text" id="flocation" name="location" placeholder="e.g. Kelowna, West Kelowna..."></div>
@@ -558,10 +558,18 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function handleSubmit(e){
   e.preventDefault();
-  const btn=e.target.querySelector('button[type="submit"]');
-  btn.textContent='Thank you! We will be in touch shortly.';
-  btn.style.background='#21867a';
-  setTimeout(()=>{e.target.reset();btn.textContent='Contact Us Today';btn.style.background=''},4000);
+  var f=e.target;
+  var name=(f.name&&f.name.value)||'';
+  var email=(f.email&&f.email.value)||'';
+  var service=(f.service&&f.service.value)||'';
+  var location=(f.location&&f.location.value)||'';
+  var message=(f.message&&f.message.value)||'';
+  var subject='Support Services Request from '+name;
+  var bodyLines=['Name: '+name,'Email: '+email,'Service Needed: '+service,'Location/Area: '+location,'','Message:',message];
+  var mailto='mailto:info@evercaresupport.ca?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(bodyLines.join('\n'));
+  window.location.href=mailto;
+  var btn=f.querySelector('button[type="submit"]');
+  if(btn){btn.textContent='Opening your email...';btn.style.background='#21867a';setTimeout(function(){btn.textContent='Contact Us Today';btn.style.background='';},4000);}
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
