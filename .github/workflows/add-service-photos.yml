@@ -1,0 +1,116 @@
+name: Add service photos
+
+on:
+  push:
+    paths:
+      - .github/workflows/add-service-photos.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-services:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Add photos to every service card
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          index = Path("index.html")
+          html = index.read_text(encoding="utf-8")
+
+          css_anchor = '.service-benefits li::before{content:"✓";color:var(--teal);font-weight:800}'
+          photo_css = '''
+          .service-photo{width:100%;height:185px;object-fit:cover;display:block;background:#dcebea}
+          .service-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+          .service-card .service-icon{margin:24px 28px 14px}
+          .service-card h3,.service-card p,.service-card .service-benefits{margin-left:28px;margin-right:28px}
+          .service-card .service-benefits{margin-bottom:28px}
+          @media(max-width:768px){.service-photo{height:230px}}
+          '''
+          if '.service-photo{' not in html:
+              if css_anchor not in html:
+                  raise SystemExit("Service CSS anchor not found")
+              html = html.replace(css_anchor, css_anchor + photo_css, 1)
+
+          service_map = {
+              'Community Inclusion Support': ('community', 'Community inclusion support in the Okanagan'),
+              'Daily Living Support': ('supported', 'Daily living and meal preparation support'),
+              'Supported Living / Outreach': ('supported', 'Supported living and daily support'),
+              'Companion Support': ('senior', 'One-to-one companion and personal support'),
+              'Respite Support': ('hero', 'Respite care and family support'),
+              'Family-Centered Support': ('hero', 'Family-centred respite support'),
+              'Personalized Support Services': ('community', 'Personalized community-based support'),
+          }
+
+          card_pattern = re.compile(r'(<div class="service-card"[^>]*>)(.*?<h3>(.*?)</h3>.*?</div>)', re.S)
+
+          def add_photo(match):
+              opening, body, title = match.groups()
+              title = re.sub(r'<.*?>', '', title).strip()
+              if title not in service_map or 'service-photo' in body:
+                  return match.group(0)
+              key, alt = service_map[title]
+              opening = opening.replace(' style="grid-column:2"', '')
+              return f'{opening}\n        <img class="service-photo" data-service-photo="{key}" alt="{alt}" loading="lazy">{body}'
+
+          html = card_pattern.sub(add_photo, html)
+
+          if 'Homemaking &amp; Household Support' not in html:
+              new_card = '''
+              <div class="service-card">
+                <img class="service-photo" data-service-photo="home" alt="Homemaking and household support" loading="lazy">
+                <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12h28v30H12z" stroke="#2a9d8f" stroke-width="2.5"/><path d="M18 20h16M18 27h16M18 34h10" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <h3>Homemaking &amp; Household Support</h3>
+                <p>Practical help with cleaning, laundry, meal preparation, organization, and other household routines that support a safe and comfortable home.</p>
+                <ul class="service-benefits"><li>Supports a clean and organized home</li><li>Reduces pressure on individuals and families</li><li>Promotes comfort, safety, and independence</li></ul>
+              </div>'''
+              personalized = re.compile(r'(<div class="service-card"[^>]*>.*?<h3>Personalized Support Services</h3>.*?</div>)', re.S)
+              if not personalized.search(html):
+                  raise SystemExit("Personalized Support Services card not found")
+              html = personalized.sub(lambda m: m.group(1) + new_card, html, count=1)
+
+          script_tag = '<script src="/assets/service-photos.js?v=2"></script>'
+          if script_tag not in html:
+              html = html.replace('</body>', script_tag + '\n</body>', 1)
+
+          index.write_text(html, encoding="utf-8")
+
+          loader = r'''(() => {
+            const sources = [
+              'hero', 'community', 'supported', 'senior', 'home'
+            ].map(name => `https://cdn.jsdelivr.net/gh/toufikghafir13-bit/evercare-support-services@f0abfcd7bb043991abf51ebf3d805c407fac2646/assets/photo-${name}.js`);
+
+            Promise.all(sources.map(src => new Promise(resolve => {
+              const script = document.createElement('script');
+              script.src = src;
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = resolve;
+              document.head.appendChild(script);
+            }))).then(() => {
+              const photos = window.EVERCARE_PHOTOS || {};
+              document.querySelectorAll('[data-service-photo]').forEach(img => {
+                const photo = photos[img.dataset.servicePhoto];
+                if (photo) img.src = photo;
+              });
+            });
+          })();
+          '''
+          Path('assets').mkdir(exist_ok=True)
+          Path('assets/service-photos.js').write_text(loader, encoding='utf-8')
+
+      - name: Commit website update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/service-photos.js
+          git diff --cached --quiet && exit 0
+          git commit -m "Add photos to every support service [skip ci]"
+          git push
