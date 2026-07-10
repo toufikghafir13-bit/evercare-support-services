@@ -76,6 +76,13 @@ section{padding:80px 5%}
 .service-benefits{list-style:none;display:flex;flex-direction:column;gap:6px}
 .service-benefits li{font-size:13px;color:var(--dark);display:flex;align-items:center;gap:6px}
 .service-benefits li::before{content:"✓";color:var(--teal);font-weight:800}
+.service-photo{width:100%;height:185px;object-fit:cover;display:block;background:#dcebea}
+.service-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.service-card .service-icon{margin:24px 28px 14px}
+.service-card h3,.service-card p,.service-card .service-benefits{margin-left:28px;margin-right:28px}
+.service-card .service-benefits{margin-bottom:28px}
+@media(max-width:768px){.service-photo{height:230px}}
+
 /* WHY US */
 .why{background:#fff}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -259,47 +266,61 @@ footer{background:var(--dark);color:#fff;padding:50px 5% 24px}
     <p class="section-sub">Flexible, individualized services delivered in client homes and community settings across the Okanagan.</p>
     <div class="services-grid">
       <div class="service-card">
+        <img class="service-photo" data-service-photo="community" alt="Community inclusion support in the Okanagan" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/><circle cx="34" cy="14" r="7" stroke="#2a9d8f" stroke-width="2.5"/><path d="M4 42c0-8 6-14 14-14h20c8 0 14 6 14 14" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M26 28v7M23 31.5h6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Community Inclusion Support</h3>
         <p>Support for individuals to participate in community activities, develop confidence, strengthen social connection, and build practical life skills.</p>
         <ul class="service-benefits"><li>Improves social participation</li><li>Builds confidence and routine</li><li>Supports meaningful community presence</li></ul>
       </div>
       <div class="service-card">
+        <img class="service-photo" data-service-photo="supported" alt="Daily living and meal preparation support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 8L38 20L32 20L32 32L20 32L20 20L14 20Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 40L44 40" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M8 40L17 26M44 40L35 26" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Daily Living Support</h3>
         <p>Assistance with routines and practical day-to-day tasks such as meal preparation, organization, appointments, and independent living skills.</p>
         <ul class="service-benefits"><li>Encourages independence</li><li>Improves consistency in routines</li><li>Supports practical skill development</li></ul>
       </div>
       <div class="service-card">
+        <img class="service-photo" data-service-photo="supported" alt="Supported living and daily support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 24L26 8L44 24L44 44L8 44Z" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/><rect x="20" y="30" width="12" height="14" stroke="#2a9d8f" stroke-width="2.5"/></svg>
         <h3>Supported Living / Outreach</h3>
         <p>Individualized, goal-directed support designed to help people maintain or increase independence while living in community-based settings.</p>
         <ul class="service-benefits"><li>Promotes autonomy</li><li>Supports community navigation</li><li>Builds independent living capacity</li></ul>
       </div>
       <div class="service-card">
+        <img class="service-photo" data-service-photo="senior" alt="One-to-one companion and personal support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 14c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8 8-3.6 8-8z" stroke="#2a9d8f" stroke-width="2.5"/><path d="M10 44v-4c0-4.4 3.6-8 8-8h4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><path d="M34 34l-4 4 4 4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 38h12" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Companion Support</h3>
         <p>Respectful one-to-one support that encourages engagement, emotional connection, confidence, and routine stability.</p>
         <ul class="service-benefits"><li>Reduces isolation</li><li>Improves engagement</li><li>Creates continuity and trust</li></ul>
       </div>
       <div class="service-card">
+        <img class="service-photo" data-service-photo="hero" alt="Respite care and family support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 10v10M26 32v10M10 26h10M32 26h10" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="26" r="10" stroke="#2a9d8f" stroke-width="2.5"/></svg>
         <h3>Respite Support</h3>
         <p>Short-term support that gives families and caregivers dependable relief while maintaining quality and continuity of care.</p>
         <ul class="service-benefits"><li>Reduces caregiver stress</li><li>Provides reliable temporary coverage</li><li>Maintains consistency for the individual</li></ul>
       </div>
       <div class="service-card">
+        <img class="service-photo" data-service-photo="hero" alt="Family-centred respite support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 40v-4a8 8 0 0 1 8-8h28a8 8 0 0 1 8 8v4" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="8" stroke="#2a9d8f" stroke-width="2.5"/><path d="M18 28l-6 6M34 28l6 6" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Family-Centered Support</h3>
         <p>Collaborative support that works with families and support networks to create stability, trust, and continuity in service delivery.</p>
         <ul class="service-benefits"><li>Strengthens communication</li><li>Aligns support with family goals</li><li>Improves care consistency</li></ul>
       </div>
-      <div class="service-card" style="grid-column:2">
+      <div class="service-card">
+        <img class="service-photo" data-service-photo="community" alt="Personalized community-based support" loading="lazy">
         <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="10" width="36" height="32" rx="4" stroke="#2a9d8f" stroke-width="2.5"/><path d="M16 22h20M16 30h12" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h3>Personalized Support Services</h3>
         <p>Flexible support tailored to the goals, needs, strengths, and routines of each individual — fully responsive to changing needs.</p>
         <ul class="service-benefits"><li>Fully individualized care</li><li>Responsive to changing needs</li><li>Centered on personal goals</li></ul>
       </div>
+    <div class="service-card">
+      <img class="service-photo" data-service-photo="home" alt="Homemaking and household support" loading="lazy">
+      <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12h28v30H12z" stroke="#2a9d8f" stroke-width="2.5"/><path d="M18 20h16M18 27h16M18 34h10" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <h3>Homemaking &amp; Household Support</h3>
+      <p>Practical help with cleaning, laundry, meal preparation, organization, and other household routines that support a safe and comfortable home.</p>
+      <ul class="service-benefits"><li>Supports a clean and organized home</li><li>Reduces pressure on individuals and families</li><li>Promotes comfort, safety, and independence</li></ul>
+    </div>
     </div>
   </div>
 </section>
@@ -528,5 +549,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+<script src="/assets/service-photos.js?v=2"></script>
 </body>
 </html>
